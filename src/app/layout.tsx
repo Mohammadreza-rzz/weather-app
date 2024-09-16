@@ -1,5 +1,6 @@
 "use client";
 import "@/assets/styles/globals.scss";
+import { SideBar } from "@/view";
 
 export default function RootLayout({
   children,
@@ -8,8 +9,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative">
-        <div>{children}</div>
+      <body className="relative grid h-screen w-screen place-items-center">
+        <div className="max-w-[1140px] min-w-[980px] h-[650px] flex rounded-lg overflow-hidden">
+          <SideBar />
+          <div className="flex-1">{children}</div>
+        </div>
       </body>
     </html>
   );
