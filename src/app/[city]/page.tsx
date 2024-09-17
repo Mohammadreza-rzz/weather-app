@@ -1,9 +1,10 @@
 import React from "react";
+import { MainView } from "@/view";
 
 interface IProps {}
 
 const City_Weather: React.FC<IProps> = () => {
-  return <div className="flex-1 bg-red-400">2</div>;
+  return <MainView />;
 };
 
 export default City_Weather;

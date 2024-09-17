@@ -1,3 +1,6 @@
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export const getCurrentTime = () => {
   const currentTime = new Date();
   const hours = currentTime.getHours();
@@ -10,3 +13,7 @@ export const getCurrentTime = () => {
     return `${hours}:${minutes}`;
   }
 };
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
