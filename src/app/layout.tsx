@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="relative grid h-screen w-screen place-items-center">
-        <div className="max-w-[1140px] min-w-[980px] h-[650px] flex rounded-lg overflow-hidden">
+        <div className="max-w-[1140px] min-w-[750px] h-[650px] flex rounded-lg overflow-hidden">
           <SideBar />
           <div className="flex-1">{children}</div>
         </div>

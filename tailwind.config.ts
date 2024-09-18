@@ -193,7 +193,7 @@ const config: Config = {
           950: "#0E121B",
         },
         gray_alpha: {
-          0: "#99A0AD14",
+          0: "#898e9f",
           50: "#99A0AD29",
           100: "#99A0AD3D",
           200: "#0E121B08",
@@ -364,6 +364,8 @@ const config: Config = {
         },
       },
       backgroundImage: {
+        tempRangGradiant:
+          "linear-gradient(90deg, rgba(0,247,35,1) 0%, rgba(254,253,21,1) 20%, rgba(255,143,0,1) 40%, rgba(227,18,13,1) 60%, rgba(249,19,184,1) 100%)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
