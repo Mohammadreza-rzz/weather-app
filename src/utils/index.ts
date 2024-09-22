@@ -14,6 +14,18 @@ export const getCurrentTime = () => {
   }
 };
 
+export function getTimeFromTimestamp(timestamp: number | null) {
+  if (timestamp?.toString().length === 10) {
+    timestamp *= 1000;
+  }
+  const date = new Date(timestamp!);
+  let hours: number | string = date.getUTCHours();
+  let minutes: number | string = date.getUTCMinutes();
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  return hours + ":" + minutes;
+}
+
 export const getCurrentTimeWithOffset = (timezoneOffset: number) => {
   const now = new Date();
 

@@ -15,7 +15,9 @@ const DailyForcastInfoCard: React.FC<IProps> = ({ dailyWeatherInfo }) => {
   return (
     <div className="bg-blue-[#597eb9]">
       <h1 className="my-2 text-paragraph_sm text-gray-50/50 mx-2">
-        {dailyWeatherInfo.flatMap((items: any) => items[0]).length}-DAY FORECAST
+        {!!dailyWeatherInfo.length &&
+          dailyWeatherInfo?.flatMap((items: any) => items[0]).length}
+        -DAY FORECAST
       </h1>
       {!!dailyWeatherInfo &&
         !!dailyWeatherInfo?.length &&
