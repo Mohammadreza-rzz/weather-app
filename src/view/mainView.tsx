@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   CityLabelInfo,
   HourlyForecastCard,
@@ -12,18 +14,40 @@ import {
   ThermometerIcon,
 } from "@/components/icons";
 
-interface IProps {}
+interface IProps {
+  weatherData?: any;
+}
 
-const MainAppView: React.FC<IProps> = () => {
+const MainAppView: React.FC<IProps> = ({ weatherData }) => {
   return (
     <main className="py-8 px-12 flex flex-col items-center bg-blue-800 h-full">
-      <CityLabelInfo />
-      <HourlyForecastCard />
-      <div className="flex space-x-10 w-full mt-4 max-h-[1000px] overflow-y-auto">
-        <div className="bg-blue-400 p-2 flex-1">
-          <DailyForcastCard />
+      <CityLabelInfo
+        cityName={!!weatherData?.cityInfo ? weatherData?.cityInfo?.name : ""}
+        temp={
+          !!weatherData?.weatherInfo ? weatherData?.weatherInfo[0][0]?.temp : ""
+        }
+        weatherStatus={
+          !!weatherData?.weatherInfo
+            ? weatherData?.weatherInfo[0][0]?.weatherStatus
+            : ""
+        }
+      />
+      <HourlyForecastCard
+        hourlyWeatherData={
+          !!weatherData?.weatherInfo && weatherData?.weatherInfo[0]
+        }
+        sunRiseTime={!!weatherData?.cityInfo && weatherData?.cityInfo?.sunrise}
+        sunSetTime={!!weatherData?.cityInfo && weatherData?.cityInfo?.sunset}
+      />
+      <div className="flex space-x-10 w-full mt-4 overflow-auto ">
+        <div className="bg-blue-400 max-h-[1000px] overflow-auto p-2 flex-1 rounded-sm">
+          <DailyForcastCard
+            dailyWeatherInfo={
+              !!weatherData?.weatherInfo && weatherData?.weatherInfo
+            }
+          />
         </div>
-        <div className="bg-red-400 flex-1 grid grid-cols-2 gap-3 h-full overflow-auto max-h-[1000px]">
+        <div className=" flex-1 grid grid-cols-2 gap-3 h-full overflow-auto max-h-[1000px]">
           <WeatherInfoCard
             value={20}
             scaleType="visibility"

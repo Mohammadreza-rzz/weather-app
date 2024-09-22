@@ -8,21 +8,17 @@ const useGetCurrentLocation = () => {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position, "position");
-      }),
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setLocation({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          (error) => {
-            console.log(error);
-            setError("Error fetching location");
-          }
-        );
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => {
+          setError("Error fetching location");
+        }
+      );
     } else {
       setError("Geolocation is not supported by this browser");
     }

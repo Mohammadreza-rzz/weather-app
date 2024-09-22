@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import "@/assets/styles/globals.scss";
 import { SideBar } from "@/view";
 import { useGetCurrentLocation } from "@/hooks";
@@ -6,18 +7,22 @@ import { locationArray } from "@/mock";
 import { getweather } from "@/api/clientApi/apiFun";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const location = useGetCurrentLocation();
-  console.log(location, "location");
-  console.log(locationArray, "location Array");
-  getweather();
+
   return (
     <html lang="en">
       <body className="relative grid h-screen w-screen place-items-center">
@@ -26,6 +31,7 @@ export default function RootLayout({
             <SideBar />
             <div className="flex-1">{children}</div>
           </div>
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </body>
     </html>

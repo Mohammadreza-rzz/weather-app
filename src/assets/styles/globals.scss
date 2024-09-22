@@ -8,6 +8,9 @@ body {
   margin: 0;
 }
 
+body::-webkit-scrollbar {
+  display: none !important;
+}
 *,
 *::after,
 *::before {
@@ -15,6 +18,8 @@ body {
   margin: 0px;
   padding: 0px;
   user-select: none;
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
 }
 /* custome class for change stroke of navigation button svg*/
 .stroke_black {

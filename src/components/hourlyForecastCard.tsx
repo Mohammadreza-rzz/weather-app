@@ -9,9 +9,18 @@ import {
 
 interface IProps {
   children?: React.ReactElement;
+  hourlyWeatherData?: any;
+  sunRiseTime?: string;
+  sunSetTime?: string;
 }
 
-const HourlyForecastCard: React.FC<IProps> = () => {
+const HourlyForecastCard: React.FC<IProps> = ({
+  hourlyWeatherData,
+  sunRiseTime,
+  sunSetTime,
+}) => {
+  console.log(sunRiseTime, sunSetTime, hourlyWeatherData, "aaaa");
+  
   return (
     <div className="bg-red-500 max-w-[800px] rounded-sm px-3 py-4 flex space-x-5 overflow-auto min-h-[150px]">
       <HourlyForecastInfoLabel>

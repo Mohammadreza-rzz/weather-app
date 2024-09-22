@@ -1,8 +1,13 @@
 import axios from "axios";
+import { locationType } from "@/types";
 
-export const getweather = () => {
-  console.log(process.env.APiKey);
-  //   return axios.get(
-  //     "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=648572f5245c1ad9857fb19d6f48edbf&lat=36.2972&lon=59.6067"
-  //   );
+export const getweather = async (location: locationType) => {
+  const weather_api_key = "bdf38c14b5fd8f41d99d3ae8911eb8ab";
+  if (location.lat && location.lng) {
+    const res = await axios.get(
+      `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${weather_api_key}&lat=${location?.lat}&lon=${location?.lng}`
+    );
+    return res.data;
+  }
+  return;
 };
