@@ -28,11 +28,8 @@ export function getTimeFromTimestamp(timestamp: number | null) {
 
 export const getCurrentTimeWithOffset = (timezoneOffset: number) => {
   const now = new Date();
-
   const utcTime = now.getTime() + now.getTimezoneOffset() * 60000;
-
   const localTime = new Date(utcTime + timezoneOffset * 60000);
-
   return localTime.toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit",

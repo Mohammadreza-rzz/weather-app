@@ -13,7 +13,7 @@ interface IProps {
 
 const DailyForcastInfoCard: React.FC<IProps> = ({ dailyWeatherInfo }) => {
   return (
-    <div className="bg-blue-[#597eb9]">
+    <div>
       <h1 className="my-2 text-paragraph_sm text-gray-50/50 mx-2">
         {!!dailyWeatherInfo.length &&
           dailyWeatherInfo?.flatMap((items: any) => items[0]).length}

@@ -17,7 +17,7 @@ const WeatherInfoCard: React.FC<IProps> = ({
   info,
 }) => {
   return (
-    <div className="bg-green-400 p-3 rounded-sm">
+    <div className="bg-blue-950/60 p-3 rounded-sm">
       <span className="flex items-center space-x-1 mt-1">
         {cardIcon}
         <h4 className="text-paragraph_sm text-gray-100/70">{cardLabel}</h4>
